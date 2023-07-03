@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script type="module" src="src/index.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+    <h1>Hello Vanilla!</h1>
+    <div>
+      <div class="title_style">
+        <p style="padding: 1rem;">
+          This simple HTML/CSS/JS Web3 app example demonstrates Arcana Auth SDK
+          integration and uses
+          <a
+            href="https://parceljs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Parcel.</a
+          >
+        </p>
+        <div class="admonition">
+          <strong>Use model:</strong>
+          <br /><br />Users must log into the app by clicking on the Auth Plug
+          and Play 'Connect' button below, authenticate themselves and then
+          access the wallet.
+        </div>
+      </div>
+    </div>
+
+    <div class="function_container">
+      <div class="functions">
+        <button id="Btn-Init-Auth">Connect</button>
+      </div>
+      <div class="functions">
+        <button id="Btn-GetAccounts">Get Accounts</button>
+      </div>
+      <div class="functions">
+        <button id="Btn-AddChain">Add Chain</button>
+      </div>
+      <div class="functions">
+        <button id="Btn-SwitchChain">Switch Chain</button>
+      </div>
+      <div class="functions">
+        <button id="Btn-Logout">Logout</button>
+      </div>
+    </div>
+    <div class="result_style" id="result-container">
+      <strong>Result: </strong><span id="result"></span>
+    </div>
+  </body>
+</html>
