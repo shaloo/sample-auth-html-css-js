@@ -1,13 +1,13 @@
 import { AuthProvider } from "@arcana/auth";
 
 // Dev Dashboard
-//const clientId = "xar_dev_19527cdf585cd31d0bd06bfc1b008accea781404"; //arc4n4-xar ponyo dev
+const clientId = "xar_dev_19527cdf585cd31d0bd06bfc1b008accea781404"; //arc4n4-xar ponyo dev
 //wallet address 0xD12E6864A0f0f3Ea886400Ae7570E4341889bDa9
 //const clientId = "xar_test_d24f70cd300823953dfa2a7f5b7c7c113356b1ad"; //arc4n4-xar ponyo testnet
 //wallet address
 
 // Mainnet dashboard
-const clientId = "xar_test_87f34a9c7879cd4b726ba36a99e164837d70143a"; //arc4n4-xar testnet quills
+//const clientId = "xar_test_87f34a9c7879cd4b726ba36a99e164837d70143a"; //arc4n4-xar testnet quills
 // wallet address 0xea8887Ad419058b9b844430F3Dc01e89Ca90d786
 //const clientId = "xar_live_d7c88d9b033d100e4200d21a5c4897b896e60063"; //arc4n4-xar mainnet quills
 //wallet address 0xbd1127C076c91274B9Ccd6c506817D364bc7ff80
@@ -17,11 +17,12 @@ const clientId = "xar_test_87f34a9c7879cd4b726ba36a99e164837d70143a"; //arc4n4-x
 
 const auth = new AuthProvider(`${clientId}`, {
   //required
-  network: "testnet", //defaults to 'testnet'
+  network: "dev", //defaults to 'testnet'
   //network: "mainnet", //defaults to 'testnet'
   position: "right", //defaults to right
   theme: "dark", //defaults to dark
   alwaysVisible: true, //defaults to true which is Full UI mode
+  compactConnectMode: true,
   chainConfig: {
     chainId: "80001", //defaults to CHAIN.ETHEREUM_MAINNET
     rpcUrl: "https://rpc.ankr.com/polygon_mumbai" //defaults to 'https://rpc.ankr.com/eth'

@@ -1,14 +1,14 @@
 {
   "name": "latest-sample-auth-simple-html-css-js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.8",
+  "description": "Sample Auth SDK v1.0.8 Integration for vanilla html/js/css app",
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html --open",
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@arcana/auth": "1.0.5",
+    "@arcana/auth": "1.0.8-beta.1",
     "parcel": "^2.9.3"
   },
   "devDependencies": {
