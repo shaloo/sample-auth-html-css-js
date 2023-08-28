@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@arcana/auth": "1.0.8-beta.1",
+    "@arcana/auth": "1.0.8-beta.3",
     "parcel": "^2.9.3"
   },
   "devDependencies": {

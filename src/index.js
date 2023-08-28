@@ -22,7 +22,9 @@ const auth = new AuthProvider(`${clientId}`, {
   position: "right", //defaults to right
   theme: "dark", //defaults to dark
   alwaysVisible: true, //defaults to true which is Full UI mode
-  compactConnectMode: true,
+  connectOptions: {
+    compact: true
+  },
   chainConfig: {
     chainId: "80001", //defaults to CHAIN.ETHEREUM_MAINNET
     rpcUrl: "https://rpc.ankr.com/polygon_mumbai" //defaults to 'https://rpc.ankr.com/eth'
