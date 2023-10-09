@@ -22,34 +22,115 @@
             >Parcel.</a
           >
         </p>
+      </div>
+      <div class="title_category_container"
+      <div class="function_container">
         <div class="admonition">
           <strong>Use model:</strong>
-          <br /><br />Users must log into the app by clicking on the Auth Plug
-          and Play 'Connect' button below, authenticate themselves and then
-          access the wallet.
+          <p style="font-size: 0.5rem;">
+          <br /><br />Call AuthProvider functions in numerical category order. Initialize (category 1) before others (category 2 and beyond).
+          </p>
+        </div>
+        <div class="event_style" id="event-container">
+          <strong>Events Triggered: </strong><span id="event"></span>
         </div>
       </div>
+  </div>
     </div>
 
-    <div class="function_container">
-      <div class="functions">
-        <button id="Btn-Init-Auth">Connect</button>
+    <div class="function_category_container">
+      <div class="function_container">
+        <div class="functions">
+          <button id="Btn-InitAuth">1. Init Auth</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-IsLoggedIn">1. Logged In?</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-CanReConnect">1. Can Reconnect?</button>
+        </div>
       </div>
-      <div class="functions">
-        <button id="Btn-GetAccounts">Get Accounts</button>
+      <div class="function_container">
+        <div class="functions">
+          <button id="Btn-GetLogins">2. Auth Options</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetAppId">2. ClientId</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetTheme">2. GetTheme</button>
+        </div>
+        <div class="functions">
+            <button id="Btn-GetLogo">2. GetLogo</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-Connect">2. Connect</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-Login-with-Link">2. Login with Link</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-Login-with-Social">2. Login with Social</button>
+        </div>
+        <div class="function_container">
+          <div class="functions">
+            <button id="Btn-Reconnect">2. Reconnect</button>
+          </div>
+        </div>
       </div>
-      <div class="functions">
-        <button id="Btn-AddChain">Add Chain</button>
+      <div class="function_container">
+        <div class="functions">
+          <button id="Btn-GetAccounts">3. Get Accounts</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-ReqAccounts">3. Request Accounts</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetUser">3. Get User Details</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetPublicKey">3. Get PublicKey</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetEncryptPublicKey">3. Get EncryptPublicKey</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-GetUserPublicKey">3. Get UserPublicKey</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-ShowWallet">3. Show Wallet</button>
+        </div>
       </div>
-      <div class="functions">
-        <button id="Btn-SwitchChain">Switch Chain</button>
+      <div class="function_container">
+        <div class="functions">
+            <button id="Btn-AddChain">4. Add Chain</button>
+          </div>
+          <div class="functions">
+            <button id="Btn-SwitchChain">4. Switch Chain</button>
+          </div>
+        <div class="functions">
+          <button id="Btn-AddToken">4. Add Token</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-PSign">4. Personal Sign</button>
+        </div>
+        <div class="functions">
+          <button id="Btn-TypedSignv4">4. TypedSignv4</button>
+        </div>
+        <!---
+        <div class="functions">
+          <button id="Btn-EthSign">4. Eth Sign</button>
+        </div>
+        -->
+      </div>      
+      <div class="function_container">
+        <div class="functions">
+          <button id="Btn-Logout">5. Logout</button>
+        </div>
       </div>
-      <div class="functions">
-        <button id="Btn-Logout">Logout</button>
+      <div class="result_style" id="result-container">
+        <strong>Result: </strong><span id="result"></span>
       </div>
-    </div>
-    <div class="result_style" id="result-container">
-      <strong>Result: </strong><span id="result"></span>
     </div>
   </body>
 </html>

@@ -7,7 +7,7 @@
 
 body {
   font-family: sans-serif;
-  padding: 2.5rem;
+  padding: 0.5rem;
 }
 
 h1 {
@@ -21,22 +21,50 @@ h2 {
 }
 
 .result_style {
-  padding: 3rem;
+  padding: 1rem;
+  background: lightcyan;
+  border-radius: 5px;
+  word-wrap: break-word;
+}
+
+.event_style {
+  padding: 1rem;
+  background: yellow;
+  border-radius: 5px;
+  margin: 1rem;
+  width: 80%;
 }
 
 .title_style {
-  padding: 2rem;
+  padding: 1rem;
   background-color: #eaeaea;
+  margin: 0.5rem;
 }
 
 .admonition {
   border: 1px solid purple;
   border-radius: 5px;
-  padding: 3rem;
+  padding: 1rem;
+}
+
+.title_category_container {
+  display: flex;
+  margin-left: 0.5rem;
+}
+
+.title_container {
+  display: block;
+  padding: 0.25rem;
+}
+
+.functions_category_container {
+  display: flex;
 }
 
 .function_container {
   display: flex;
+  padding: 0.5rem;
+  border-bottom: 3px dotted gray;
 }
 
 .functions {
