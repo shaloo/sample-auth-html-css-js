@@ -272,7 +272,10 @@ async function getUser() {
       userInfo.loginType.toString() +
       "," +
       "Public Key: " +
-      userInfo.publicKey.toString();
+      userInfo.publicKey.toString() +
+      "," +
+      "Arcana JWT Token: " +
+      userInfo.loginToken.toString();
   } catch (e) {
     console.log(e);
   }
