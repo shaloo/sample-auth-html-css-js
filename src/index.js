@@ -198,8 +198,27 @@ async function emailCallback() {
     "Login With Link: Link Emailed!";
 }
 
+async function loginWithOTP() {
+  try {
+    console.log("Login OTP will be sent to:", ENV_USER_LOGIN_EMAIL);
+
+    const login = await auth.loginWithOTPStart(ENV_USER_LOGIN_EMAIL)
+    await login.begin()
+
+    if(login.isCompleteRequired) {
+      console.log("isCompleteRequired is True");
+      await loginWithOTPComplete(ENV_USER_LOGIN_EMAIL, emailCallback)
+    }
+    document.querySelector("#result").innerHTML =
+      "Login With Link: Link Emailed to emailID=", ENV_USER_LOGIN_EMAIL;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 async function loginWithLink() {
   try {
+    console.log("Login email link will be sent to:", ENV_USER_LOGIN_EMAIL);
     await auth.loginWithLink(ENV_USER_LOGIN_EMAIL, emailCallback());
     document.querySelector("#result").innerHTML =
       "Login With Link: Link Emailed to emailID=", ENV_USER_LOGIN_EMAIL;
@@ -605,6 +624,9 @@ document
 document
   .querySelector("#Btn-Login-with-Link")
   .addEventListener("click", loginWithLink);
+document
+  .querySelector("#Btn-Login-with-OTP")
+  .addEventListener("click", loginWithOTP);
 document
   .querySelector("#Btn-GetAccounts")
   .addEventListener("click", getAccounts);
