@@ -418,7 +418,7 @@ async function sendTransaction() {
   }
 }
 
-/*eth_sign is not recommended*/
+/*eth_signTransaction is not recommended*/
 /*
 async function ethSign() {
   console.log("Requesting signature");
