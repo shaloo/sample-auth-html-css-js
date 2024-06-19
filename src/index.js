@@ -1,5 +1,9 @@
 import { AuthProvider } from "@arcana/auth";
 
+/* For contract deployment following are needed */
+import { ethers } from "ethers";
+/*import { fs } from "fs";*/
+
 let provider;
 let from = ""; // get from eth_accounts call
 let userPK; // public key corresponding to the email ID, verifier
@@ -418,6 +422,25 @@ async function sendTransaction() {
   }
 }
 
+async function ethContractDeploy() {
+  console.log("Requesting Contract Deployment");
+  bytecode = await import('./jmtk-erc20-bc.json');
+  abi = await import('./jmtk-erc20-abi.json');
+  const myProvider = new ethers.providers.Web3Provider(auth.getProvider());
+  const signer = await myProvider.getSigner();
+
+  /* Now create a contract via factory */
+  const myContract = new ethers.ContractFactory(abi, bytecode, signer);
+
+  /* Now deploy the contract*/
+
+  const contract = await myContract.deploy("0x19Db25F1d1e857F0b17C56a1A7A7d8C9fe09Ee17");
+  console.log("contract deployed at address:", contract.address());
+
+  document.querySelector("#result").innerHTML =
+    "Contract Deployment Transaction successful!" + address;
+}
+
 /*eth_signTransaction is not recommended*/
 /*
 async function ethSign() {
@@ -653,6 +676,9 @@ document.querySelector("#Btn-PSign").addEventListener("click", pSign);
 document
   .querySelector("#Btn-TypedSignv4")
   .addEventListener("click", typedSignv4);
+document
+  .querySelector("#Btn-Contract")
+  .addEventListener("click", ethContractDeploy);
 /*
 document.querySelector("#Btn-EthSign").addEventListener("click", ethSign);
 */
