@@ -7,6 +7,7 @@ import { ethers } from "ethers";
 let provider;
 let from = ""; // get from eth_accounts call
 let userPK; // public key corresponding to the email ID, verifier
+let isPasskeySet = false;
 
 let {
   ENV_ARCANA_CLIENTID, 
@@ -238,6 +239,66 @@ async function loginWithSocial() {
       "Login With Social Provider: " +
       ENV_USER_LOGIN_VERIFIER +
       " Logged in!";
+  } catch (e) {
+    console.log(e);
+  }
+}
+async function unlinkPasskey() {
+  try {
+    let ans = await auth.isLoggedIn();
+    if (ans){
+      const myKeys = await auth.getMyPasskeys();
+      console.log("My Passkeys:", myKeys)
+      document.querySelector("#result").innerHTML =
+      "You will be Unlinking Passkey[0]: " +
+      myKeys[0];
+      await auth.unlinkPasskey[myKeys[0]];
+      console.log("Unlinked Passkey:", myKeys[0])
+      document.querySelector("#result").innerHTML =
+      "Unlinked Passkey[0]: " +
+      myKeys[0];   
+      isPasskeySet = false;
+      // Hide the login with Passkey option now that they are unlinked
+      showPasskeyLogin.style.display = "none";
+    } else console.log("User must be logged in to unlink passkey!!!");
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function setPasskey() {
+  try {
+    let ans = await auth.isLoggedIn();
+    if (ans) {
+      if (!isPasskeySet) {
+        await auth.linkPasskey();
+        document.querySelector("#result").innerHTML =
+          "Linked Passkey for the current user. ";
+        isPasskeySet = true;
+        // Display login with Passkey now that they are set
+        showPasskeyLogin.style.display = "block";
+      } else console.log("Passkey already linked for this app. You can unlink and set again.");
+    } else console.log("User must be logged in to set passkey!!!");
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+async function loginWithPasskey() {
+  try {
+    let sup = await auth.isPasskeyLoginSupported();
+    if (sup){
+      let ans = await auth.isLoggedIn();
+      if (!ans){
+        await auth.loginWithPasskey();
+        const userInfo = await auth.getUser();
+        console.log({ userInfo });
+        document.querySelector("#result").innerHTML =
+          "Login With Passkey: " +
+          userInfo.name.toString() +
+          " Logged in with Passkey!";
+      } else console.log("User already logged in!");
+    } else console.log("Login via Passkey not supported on this device/browser.")
   } catch (e) {
     console.log(e);
   }
@@ -642,6 +703,15 @@ document
 document.querySelector("#Btn-Reconnect").addEventListener("click", reconnect);
 document.querySelector("#Btn-Connect").addEventListener("click", connect);
 document
+  .querySelector("#Btn-SetPasskey")
+  .addEventListener("click", setPasskey);
+  document
+  .querySelector("#Btn-UnlinkPasskey")
+  .addEventListener("click", unlinkPasskey);
+document
+  .querySelector("#Btn-Login-with-Passkey")
+  .addEventListener("click", loginWithPasskey);
+document
   .querySelector("#Btn-Login-with-Social")
   .addEventListener("click", loginWithSocial);
 document
@@ -683,3 +753,5 @@ document
 document.querySelector("#Btn-EthSign").addEventListener("click", ethSign);
 */
 document.querySelector("#Btn-Logout").addEventListener("click", logout);
+const showPasskeyLogin = document.getElementById("Btn-Login-with-Passkey");
+showPasskeyLogin.style.display = "none";
