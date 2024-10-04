@@ -276,7 +276,9 @@ async function setPasskey() {
           "Linked Passkey for the current user. ";
         isPasskeySet = true;
         // Display login with Passkey now that they are set
+        const showPasskeyLogin = document.getElementById("Btn-Login-with-Passkey");
         showPasskeyLogin.style.display = "block";
+        console.log("Login with Passkey enabled in UI now!!!")
       } else console.log("Passkey already linked for this app. You can unlink and set again.");
     } else console.log("User must be logged in to set passkey!!!");
   } catch (e) {
@@ -295,7 +297,7 @@ async function loginWithPasskey() {
         console.log({ userInfo });
         document.querySelector("#result").innerHTML =
           "Login With Passkey: " +
-          userInfo.name.toString() +
+          userInfo.id.toString() +
           " Logged in with Passkey!";
       } else console.log("User already logged in!");
     } else console.log("Login via Passkey not supported on this device/browser.")
@@ -350,7 +352,7 @@ async function getUser() {
       userInfo.email.toString() +
       "," +
       "Name: " +
-      userInfo.name.toString() +
+      userInfo.id.toString() +
       "," +
       "Login Type: " +
       userInfo.loginType.toString() +
