@@ -1,4 +1,5 @@
 import { AuthProvider } from "@arcana/auth";
+//import { AuthProvider } from "../../../an-os/auth/dist/standalone/auth.umd.js";
 
 /* For contract deployment following are needed */
 import { ethers } from "ethers";
@@ -243,6 +244,29 @@ async function loginWithSocial() {
     console.log(e);
   }
 }
+
+async function registerWithPasskey() {
+  try {
+    let sup = await auth.isPasskeyLoginSupported();
+    if (sup){
+      let ans = await auth.isLoggedIn();
+      if (!ans){
+        await auth.registerWithPasskey(ENV_USER_LOGIN_EMAIL);
+        isPasskeySet = true;
+        // Display login with Passkey now that they are set
+        const showPasskeyLogin = document.getElementById("Btn-Login-with-Passkey");
+        showPasskeyLogin.style.display = "block";
+        console.log("Login with Passkey enabled in UI now!!!")      
+        document.querySelector("#result").innerHTML =
+          "Register With Passkey for email: " + ENV_USER_LOGIN_EMAIL +
+          " Done!";
+      } else console.log("User already logged in, you can set new passkeys for the user or unlink them!");
+    } else console.log("Login via Passkey not supported on this device/browser.")
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 async function unlinkPasskey() {
   try {
     let ans = await auth.isLoggedIn();
@@ -705,9 +729,12 @@ document
 document.querySelector("#Btn-Reconnect").addEventListener("click", reconnect);
 document.querySelector("#Btn-Connect").addEventListener("click", connect);
 document
+  .querySelector("#Btn-RegisterWithPasskeys")
+  .addEventListener("click", registerWithPasskey);
+document
   .querySelector("#Btn-SetPasskey")
   .addEventListener("click", setPasskey);
-  document
+document
   .querySelector("#Btn-UnlinkPasskey")
   .addEventListener("click", unlinkPasskey);
 document
